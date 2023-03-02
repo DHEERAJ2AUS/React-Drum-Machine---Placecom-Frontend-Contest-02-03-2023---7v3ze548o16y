@@ -1,7 +1,31 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
+import Pad from "./Pad";
+import {bank1} from "./App"
 
 
+function Pads() {
+    const keypadCode = Object.keys(bank1);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+    const playSound = e => {
+    }
+
+
+    return (
+      <div id='div-pads'>
+        {keypadCode.map((pad, idx) => {
+          console.log(pad + idx)
+          return (
+            <Pad
+              id={pad+idx}
+              key={pad+idx}
+              handleClick={playSound}
+              element={pad} />
+          );
+        })}
+        <div id='display'> Show the name of current audio here </div>  
+      </div>
+    )
+  }
+
+  export default Pads ; 
